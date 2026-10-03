@@ -32,7 +32,7 @@
     .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(6px) rotate(45deg); }
     .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
     .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-6px) rotate(-45deg); }
-    .menu-panel { position: fixed; inset: 0; z-index: 2; overflow-y: auto; overscroll-behavior: contain; padding-top: 68px; border-top: 1px solid var(--line); background: var(--white); touch-action: pan-y; }
+    .menu-panel { position: fixed; inset: 0; width: 100vw; height: 100vh; height: 100dvh; z-index: 2; overflow-y: auto; overscroll-behavior: contain; padding-top: 68px; border-top: 1px solid var(--line); background: var(--white); touch-action: pan-y; }
     .menu-panel[hidden] { display: none; }
     .menu-inner { min-height: calc(100dvh - 68px); max-width: var(--max); margin: 0 auto; padding: 18px 28px 40px; }
     body.menu-open { overflow: hidden; }

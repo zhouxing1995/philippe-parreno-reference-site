@@ -55,6 +55,14 @@
     .figure-description { margin-top: 3px; }
     .figure-source { margin-top: 8px; }
     figcaption a { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
+    .membership-cta { max-width: var(--max); margin: 0 auto; padding: 0 28px 26px; }
+    .membership-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 16px 18px; border: 1px solid var(--black); background: var(--white); }
+    .membership-cta-copy { min-width: 0; }
+    .membership-cta-kicker { margin: 0 0 4px; color: var(--red); font-size: 10px; letter-spacing: .12em; font-weight: 700; }
+    .membership-cta-copy p { margin: 0; color: #3f3f3f; font-size: 13px; line-height: 1.5; }
+    .membership-cta-copy p strong { color: var(--black); }
+    .membership-cta-action { flex: 0 0 auto; padding: 10px 14px; border: 1px solid var(--red); color: var(--red); font-size: 12px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+    .membership-cta-action:hover { color: var(--white); background: var(--red); }
     .artist-profile { max-width: var(--max); margin: 0 auto; padding: 18px 28px 56px; scroll-margin-top: 80px; }
     .profile-panel { border: 1px solid var(--line); background: var(--white); padding: 24px; }
     .profile-intro { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px; align-items: end; padding-bottom: 22px; border-bottom: 1px solid var(--black); }
@@ -235,6 +243,9 @@
     @media (max-width: 640px) {
       .header-inner, .hero, .visual-index, main, .footer-inner, .artist-profile { padding-left: 18px; padding-right: 18px; }
       .hero { min-height: 0; padding-top: 24px; padding-bottom: 30px; }
+      .membership-cta { padding-left: 18px; padding-right: 18px; padding-bottom: 18px; }
+      .membership-cta-inner { display: block; padding: 14px; }
+      .membership-cta-action { display: inline-block; margin-top: 13px; white-space: normal; }
       h1 { font-size: 52px; }
       .visual-index { grid-template-columns: 1fr; gap: 18px; }
       .visual-index img { aspect-ratio: 1.8 / 1; }
@@ -285,7 +296,8 @@
 <a href="#catalogues"><span>05</span>艺术家 Catalogues / Books</a>
 <a href="#archives"><span>06</span>机构展览 / 收藏档案</a>
 <a href="#essays"><span>07</span>研究文章 / 评论 / 长文</a>
-<a href="#theory"><span>08</span>Art Theory / 语境阅读</a>
+          <a href="#theory"><span>08</span>Art Theory / 语境阅读</a>
+          <a href="#membership"><span>09</span>订阅 / Membership</a>
         </nav>
       </div>
     </div>
@@ -297,6 +309,16 @@
       <figcaption><span class="figure-title">Noor（2026）</span><span class="figure-description">以光为核心，将物体、影像与空间组织成彼此感知、持续变化的展览环境。</span><span class="figure-source">图片来源：<a href="https://gladstonegallery.com/en/exhibit/noor-philippe-parreno-bgg26/" target="_blank" rel="noopener">Gladstone Gallery ↗</a></span></figcaption>
     </figure>
   </div>
+
+  <section class="membership-cta" id="membership" aria-label="X-ART Lab 订阅入口">
+    <div class="membership-cta-inner">
+      <div class="membership-cta-copy">
+        <p class="membership-cta-kicker">X-ART LAB. / MEMBER ACCESS</p>
+        <p><strong>完整档案与研究资料</strong>通过 X-ART Lab. 会员系统进入；月度与年度方案由 Stripe 安全支付。</p>
+      </div>
+      <a class="membership-cta-action" href="https://x-art-lab.pages.dev/auth?next=%2F%3Ftab%3Dsubscribe%26from%3Dauth" target="_blank" rel="noopener">订阅 / 进入会员系统 ↗</a>
+    </div>
+  </section>
 
   <section class="visual-index" aria-label="展览图像索引">
     <figure>
@@ -338,11 +360,16 @@
           <div class="profile-block">
             <p class="profile-kicker">KEY CONCEPTS / 关键词</p>
             <ul class="profile-list">
-              <li>将展览作为媒介</li>
-              <li>剧本化空间与编舞</li>
-              <li>持续时间、节奏与记忆</li>
-              <li>协作与复调</li>
-              <li>现实、虚构与信息</li>
+              <li><a href="https://www.pilarcorrias.com/artists/30-philippe-parreno/biography/" target="_blank" rel="noopener">exhibition as medium</a> / 将展览作为媒介</li>
+              <li><a href="https://www.pilarcorrias.com/artists/30-philippe-parreno/biography/" target="_blank" rel="noopener">scripted space</a> / 剧本化空间</li>
+              <li><a href="https://www.estherschipper.com/exhibitions/1349-voices-philippe-parreno/introduction/" target="_blank" rel="noopener">choreographed spaces</a> / 编舞化空间</li>
+              <li><a href="https://www.pilarcorrias.com/artists/30-philippe-parreno/" target="_blank" rel="noopener">reality and fiction</a> / 现实与虚构</li>
+              <li><a href="https://www.pilarcorrias.com/artists/30-philippe-parreno/" target="_blank" rel="noopener">reality, memory, and the passage of time</a> / 现实、记忆与时间流逝</li>
+              <li><a href="https://www.estherschipper.com/exhibitions/530-a-time-coloured-space-philippe-parreno/introduction/" target="_blank" rel="noopener">quasi-object</a> / 准物体</li>
+              <li><a href="https://www.estherschipper.com/exhibitions/530-a-time-coloured-space-philippe-parreno/introduction/" target="_blank" rel="noopener">repetition and counterpoint</a> / 重复与对位</li>
+              <li><a href="https://www.pilarcorrias.com/artists/30-philippe-parreno/" target="_blank" rel="noopener">sculpture, drawing, film, and performance</a> / 雕塑、绘画、电影与表演</li>
+              <li><a href="https://www.estherschipper.com/exhibitions/1349-voices-philippe-parreno/introduction/" target="_blank" rel="noopener">sound and image</a> / 声音与影像</li>
+              <li><a href="https://www.estherschipper.com/exhibitions/1349-voices-philippe-parreno/introduction/" target="_blank" rel="noopener">in real time</a> / 实时性</li>
             </ul>
           </div>
           <div class="profile-columns">
@@ -353,7 +380,8 @@
             </div>
             <div class="profile-block">
               <p class="profile-kicker">REPRESENTATION / 代理画廊</p>
-              <p><a href="https://gladstonegallery.com/en/artist/philippe-parreno/" target="_blank" rel="noopener">Gladstone Gallery ↗</a><br><a href="https://mennour.com/fr/artist/philippe-parreno" target="_blank" rel="noopener">Mennour ↗</a></p>
+              <p><a href="https://gladstonegallery.com/en/artist/philippe-parreno/" target="_blank" rel="noopener">Gladstone Gallery ↗</a><br><a href="https://mennour.com/fr/artist/philippe-parreno" target="_blank" rel="noopener">Mennour ↗</a><br><a href="https://www.estherschipper.com/artists/47-philippe-parreno/" target="_blank" rel="noopener">Esther Schipper ↗</a><br><a href="https://www.pilarcorrias.com/artists/30-philippe-parreno/" target="_blank" rel="noopener">Pilar Corrias ↗</a></p>
+              <p class="profile-note">历史代理／档案合作：<a href="https://www.airdeparis.com/artists/cv/philippe_parreno.pdf" target="_blank" rel="noopener">Air de Paris ↗</a> · <a href="https://www.1301pe.com/philippe-parreno-1" target="_blank" rel="noopener">1301PE ↗</a></p>
             </div>
           </div>
         </div>

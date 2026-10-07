@@ -1259,21 +1259,53 @@
       const setLanguageSpecificContent = (lang) => {
         if (lang === 'zh') return;
         const c = contentFor(lang);
+        const fr = lang === 'fr';
         setListText('.visual-index .figure-title', c.visualTitles.slice(1));
         setListText('.visual-index .figure-description', c.visualDescriptions.slice(1));
         setListText('#profile .profile-doc span', c.profileDocs);
         setListText('#profile .profile-project > p:not(.project-meta):not(.project-image-credit)', c.projects);
         setListText('#profile .profile-project .project-meta', c.projectMeta);
         setListText('#timeline .verified-timeline-item h4 a', c.timelineTitles);
+        setListText('#noor .noor-copy > p:not(.noor-meta)', fr ? [
+          'Construite autour de la lumière, Noor agence objets, images et espace en un environnement changeant où les choses se perçoivent et se répondent.',
+          'Les œuvres évoluent selon des séquences organisées par des algorithmes et des rythmes syncopés ; lumière, son et objets se déclenchent mutuellement, déplaçant le regard vers le temps, le rythme et l’espace.',
+        ] : [
+          'Built around light, Noor arranges objects, images and space as a changing environment in which things perceive and answer one another.',
+          'The works evolve through algorithmic sequences and syncopated rhythms; light, sound and objects trigger one another, shifting attention toward time, rhythm and spatial relations.',
+        ]);
+        setText('#noor .noor-meta', fr ? 'Exposition : Gladstone Gallery, New York: 21st Street ; 13 mai – 26 juin 2026. Titles, matériaux, dimensions et images sont transcrits à partir de la page Noor et de ses documents officiels.' : 'Exhibition: Gladstone Gallery, New York: 21st Street; 13 May – 26 June 2026. Titles, materials, dimensions and images are transcribed from the Noor page and its official exhibition materials.');
+        setListText('#noor .noor-actions a', fr ? ['Ouvrir le communiqué ↗', 'Regarder la vidéo ↗'] : ['Open press release ↗', 'Watch video ↗']);
         setListText('#noor .noor-summary', c.noorSummaries);
         setListText('#noor .noor-medium', c.noorMediums);
         setListText('#noor .noor-material', c.noorMaterials);
         setListText('#video-notes .video-note-kicker', c.videoKickers);
         setListText('#video-notes .video-note > p:not(.video-note-kicker):not(.video-note-source)', c.videoDescriptions);
+        setText('.profile-sources', fr ? 'Le PDF complet réunit présentation de l’artiste, chronologie des expositions, dossier Noor, recherches vidéo et références théoriques ; les sources des textes, expositions et images restent accessibles séparément.' : 'The complete PDF brings together the artist profile, exhibition timeline, Noor dossier, video research and theoretical references; sources for texts, exhibitions and images remain individually accessible.');
         document.querySelectorAll('.reference-section .description').forEach((el) => {
           const section = el.closest('.reference-section')?.id;
           el.textContent = c.fallback[section] || c.fallback.generic;
         });
+      };
+      const setInterfaceLabels = (lang) => {
+        if (lang === 'zh') return;
+        const fr = lang === 'fr';
+        [
+          ['KEY CONCEPTS / 关键词', fr ? 'CONCEPTS CLÉS' : 'KEY CONCEPTS'],
+          ['EDUCATION / 教育', fr ? 'FORMATION' : 'EDUCATION'],
+          ['REPRESENTATION / 代理画廊', fr ? 'REPRÉSENTATION' : 'REPRESENTATION'],
+          ['IMPORTANT DOCUMENTS / 重要资料', fr ? 'DOCUMENTS IMPORTANTS' : 'IMPORTANT DOCUMENTS'],
+          ['EXHIBITION DOCUMENTS / 展览资料', fr ? 'DOCUMENTS D’EXPOSITION' : 'EXHIBITION DOCUMENTS'],
+          ['WORKS / 作品', fr ? 'ŒUVRES' : 'WORKS'],
+          ['X-ART LAB. / MEMBER ACCESS', fr ? 'X-ART LAB. / ACCÈS MEMBRES' : 'X-ART LAB. / MEMBER ACCESS'],
+          ['CATALOGUES + BOOKS', fr ? 'CATALOGUES + LIVRES' : 'CATALOGUES + BOOKS'],
+          ['INSTITUTIONAL ARCHIVES', fr ? 'ARCHIVES INSTITUTIONNELLES' : 'INSTITUTIONAL ARCHIVES'],
+          ['ESSAYS + CRITICAL WRITING', fr ? 'ESSAIS + TEXTES CRITIQUES' : 'ESSAYS + CRITICAL WRITING'],
+          ['THEORY + CONTEXT', fr ? 'THÉORIE + CONTEXTE' : 'THEORY + CONTEXT'],
+          ['原 PDF 第', fr ? 'PDF original, pp. ' : 'PDF pp. '],
+          ['Philippe Parreno / 参考资料网页', fr ? 'Philippe Parreno / Page de référence' : 'Philippe Parreno / Reference page'],
+        ].forEach(([from, to]) => replaceInTextNodes(from, to));
+        const concepts = fr ? ['l’exposition comme médium', 'espace scénarisé', 'espaces chorégraphiés', 'réalité et fiction', 'réalité, mémoire et passage du temps', 'quasi-objet', 'répétition et contrepoint', 'sculpture, dessin, film et performance', 'son et image', 'en temps réel'] : ['exhibition as medium', 'scripted space', 'choreographed spaces', 'reality and fiction', 'reality, memory, and the passage of time', 'quasi-object', 'repetition and counterpoint', 'sculpture, drawing, film, and performance', 'sound and image', 'in real time'];
+        document.querySelectorAll('#profile .profile-list li').forEach((li, index) => { const link = li.querySelector('a'); if (link && concepts[index]) link.textContent = concepts[index]; [...li.childNodes].filter((node) => node.nodeType === Node.TEXT_NODE).forEach((node) => { node.nodeValue = ''; }); });
       };
       const sanitizeSingleLanguage = (lang) => {
         if (lang === 'zh') return;
@@ -1309,7 +1341,7 @@
         Object.entries(t.sections).forEach(([id, values]) => { setText(`#${id} .section-heading h2`, values[0]); setText(`#${id} > .section-description`, values[1]); });
         document.querySelectorAll('.figure-source').forEach((el) => { const first = el.childNodes[0]; if (first && first.nodeType === Node.TEXT_NODE) first.nodeValue = t.source; });
         replaceInTextNodes('打开原文 ↗', t.openSource); replaceInTextNodes('图片来源：', t.source); replaceInTextNodes('作品资料 / 图片来源：', t.source); replaceInTextNodes('媒介 / 格式：', t.medium); replaceInTextNodes('材料 / 尺寸：', t.materials); replaceInTextNodes('原图：', t.original); replaceInTextNodes('作品概述：', lang === 'en' ? 'Work overview: ' : lang === 'fr' ? 'Aperçu : ' : '作品概述：'); replaceInTextNodes('摄影：', lang === 'en' ? 'Photography: ' : lang === 'fr' ? 'Photographie : ' : '摄影：'); replaceInTextNodes('资料：', lang === 'en' ? 'Source: ' : lang === 'fr' ? 'Source : ' : '资料：'); replaceInTextNodes('来源：', lang === 'en' ? 'Source: ' : lang === 'fr' ? 'Source : ' : '来源：'); document.querySelectorAll('.footer-inner p:last-child').forEach((el) => { el.textContent = t.footer; });
-        setLanguageSpecificContent(lang); sanitizeSingleLanguage(lang);
+        setLanguageSpecificContent(lang); setInterfaceLabels(lang); sanitizeSingleLanguage(lang);
       };
       const requested = new URLSearchParams(location.search).get('lang') || 'zh'; setLanguage(requested);
       window.addEventListener('message', (event) => { const lang = event.data?.type === 'xart-language' ? event.data.language : ''; if (copy[lang]) setLanguage(lang); });

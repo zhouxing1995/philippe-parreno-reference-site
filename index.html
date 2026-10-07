@@ -1343,7 +1343,8 @@
         replaceInTextNodes('打开原文 ↗', t.openSource); replaceInTextNodes('图片来源：', t.source); replaceInTextNodes('作品资料 / 图片来源：', t.source); replaceInTextNodes('媒介 / 格式：', t.medium); replaceInTextNodes('材料 / 尺寸：', t.materials); replaceInTextNodes('原图：', t.original); replaceInTextNodes('作品概述：', lang === 'en' ? 'Work overview: ' : lang === 'fr' ? 'Aperçu : ' : '作品概述：'); replaceInTextNodes('摄影：', lang === 'en' ? 'Photography: ' : lang === 'fr' ? 'Photographie : ' : '摄影：'); replaceInTextNodes('资料：', lang === 'en' ? 'Source: ' : lang === 'fr' ? 'Source : ' : '资料：'); replaceInTextNodes('来源：', lang === 'en' ? 'Source: ' : lang === 'fr' ? 'Source : ' : '来源：'); document.querySelectorAll('.footer-inner p:last-child').forEach((el) => { el.textContent = t.footer; });
         setLanguageSpecificContent(lang); setInterfaceLabels(lang); sanitizeSingleLanguage(lang);
       };
-      const requested = new URLSearchParams(location.search).get('lang') || 'zh'; setLanguage(requested);
+      const requested = new URLSearchParams(location.search).get('lang') || 'zh';
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => setLanguage(requested), { once: true }); else setLanguage(requested);
       window.addEventListener('message', (event) => { const lang = event.data?.type === 'xart-language' ? event.data.language : ''; if (copy[lang]) setLanguage(lang); });
     })();
   </script>

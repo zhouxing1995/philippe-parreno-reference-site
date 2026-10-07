@@ -1181,16 +1181,16 @@
     (() => {
       const copy = {
         zh: {
-          menu: '目录 / MENU', open: '打开目录', close: '关闭目录',
-          nav: ['艺术家简介 / Artist profile', '时间线 / Timeline', 'Noor / 努尔', '视频笔记 / Video notes', '艺术家图录 / Books', '机构展览 / 收藏档案', '研究文章 / 评论 / 长文', '艺术理论 / 语境阅读', '订阅 / Membership'],
+          menu: '目录', open: '打开目录', close: '关闭目录',
+          nav: ['艺术家简介', '时间线', '努尔', '视频笔记', '艺术家图录与书籍', '机构展览与收藏档案', '研究文章与评论', '艺术理论与语境阅读', '订阅'],
           hero: '以光为核心，将物体、影像与空间组织成彼此感知、持续变化的展览环境。',
           memberTitle: '完整档案与研究资料', memberText: '通过 X-ART Lab. 会员系统进入；月度与年度方案由 Stripe 安全支付。', memberButton: '订阅 / 进入会员系统 ↗',
-          profile: '艺术家简介', profileKicker: 'ARTIST PROFILE / PHILIPPE PARRENO', profileCount: '网页简介',
+          profile: '艺术家简介', profileKicker: '艺术家简介', profileCount: '网页简介',
           profileIntro: 'Philippe Parreno（1964 年生于阿尔及利亚奥兰，现居并工作于巴黎）将展览本身视为一种媒介。他跨越电影、雕塑、绘画与文字进行创作，把展览构想为一个有脚本的空间：物体、图像、建筑、声音与光在时间中不断建立新的关系，使观看成为一种独特而持续的经验。',
           download: '下载完整资料 PDF ↓', portrait: '艺术家肖像', portraitDesc: 'Philippe Parreno，Andrea Rossetti 摄影。',
-          timeline: 'TIME & PLACE / 时间与地点', timelineDesc: '根据所附双语时间线 PDF 重排；条目保留原文的展览名称、地点与可追溯链接，显示 2015–2026 年间与 Parreno 展览机制相关的重要节点。',
-          noor: 'Noor / 努尔', video: 'VIDEO NOTES / 视频研究笔记', videoDesc: '这份资料把 2024–2026 年的艺术家访谈与展览影片整理成四个入口。每一项都保留原视频链接，并把 PDF 中的作品语境、展览方法和关键词放在视频后面，便于从作品继续阅读。',
-          sections: { catalogues: ['艺术家图录 / Books', '展览图录、艺术家专著与出版资料。 以下按最新至最旧排列。'], archives: ['机构展览 / 收藏档案', '博物馆、基金会与展览机构的官方页面。 以下按最新至最旧排列。'], essays: ['研究文章 / 评论 / 长文', '围绕作品、电影、时间与展览机制的评论和研究性文章。 以下按最新至最旧排列。'], theory: ['艺术理论 / 语境阅读', '用于延伸理解 Parreno 展览实践的艺术理论与策展语境。 以下按最新至最旧排列。'] },
+          timeline: '时间与地点', timelineDesc: '根据所附双语时间线 PDF 重排；条目保留原文的展览名称、地点与可追溯链接，显示 2015–2026 年间与 Parreno 展览机制相关的重要节点。',
+          noor: '努尔', video: '视频研究笔记', videoDesc: '这份资料把 2024–2026 年的艺术家访谈与展览影片整理成四个入口。每一项都保留原视频链接，并把 PDF 中的作品语境、展览方法和关键词放在视频后面，便于从作品继续阅读。',
+          sections: { catalogues: ['艺术家图录与书籍', '展览图录、艺术家专著与出版资料。以下按最新至最旧排列。'], archives: ['机构展览与收藏档案', '博物馆、基金会与展览机构的官方页面。以下按最新至最旧排列。'], essays: ['研究文章与评论', '围绕作品、电影、时间与展览机制的评论和研究性文章。以下按最新至最旧排列。'], theory: ['艺术理论与语境阅读', '用于延伸理解 Parreno 展览实践的艺术理论与策展语境。以下按最新至最旧排列。'] },
           openSource: '打开原文 ↗', source: '图片来源：', medium: '媒介 / 格式：', materials: '材料 / 尺寸：', original: '原图：', footer: '分类内按最新至最旧排列；点击标题、中文说明或“打开原文”即可访问来源。'
         },
         en: {
@@ -1287,24 +1287,23 @@
         });
       };
       const setInterfaceLabels = (lang) => {
-        if (lang === 'zh') return;
         const fr = lang === 'fr';
         [
-          ['KEY CONCEPTS / 关键词', fr ? 'CONCEPTS CLÉS' : 'KEY CONCEPTS'],
-          ['EDUCATION / 教育', fr ? 'FORMATION' : 'EDUCATION'],
-          ['REPRESENTATION / 代理画廊', fr ? 'REPRÉSENTATION' : 'REPRESENTATION'],
-          ['IMPORTANT DOCUMENTS / 重要资料', fr ? 'DOCUMENTS IMPORTANTS' : 'IMPORTANT DOCUMENTS'],
-          ['EXHIBITION DOCUMENTS / 展览资料', fr ? 'DOCUMENTS D’EXPOSITION' : 'EXHIBITION DOCUMENTS'],
-          ['WORKS / 作品', fr ? 'ŒUVRES' : 'WORKS'],
-          ['X-ART LAB. / MEMBER ACCESS', fr ? 'X-ART LAB. / ACCÈS MEMBRES' : 'X-ART LAB. / MEMBER ACCESS'],
-          ['CATALOGUES + BOOKS', fr ? 'CATALOGUES + LIVRES' : 'CATALOGUES + BOOKS'],
-          ['INSTITUTIONAL ARCHIVES', fr ? 'ARCHIVES INSTITUTIONNELLES' : 'INSTITUTIONAL ARCHIVES'],
-          ['ESSAYS + CRITICAL WRITING', fr ? 'ESSAIS + TEXTES CRITIQUES' : 'ESSAYS + CRITICAL WRITING'],
-          ['THEORY + CONTEXT', fr ? 'THÉORIE + CONTEXTE' : 'THEORY + CONTEXT'],
+          ['KEY CONCEPTS / 关键词', lang === 'zh' ? '关键词' : fr ? 'CONCEPTS CLÉS' : 'KEY CONCEPTS'],
+          ['EDUCATION / 教育', lang === 'zh' ? '教育' : fr ? 'FORMATION' : 'EDUCATION'],
+          ['REPRESENTATION / 代理画廊', lang === 'zh' ? '代理画廊' : fr ? 'REPRÉSENTATION' : 'REPRESENTATION'],
+          ['IMPORTANT DOCUMENTS / 重要资料', lang === 'zh' ? '重要资料' : fr ? 'DOCUMENTS IMPORTANTS' : 'IMPORTANT DOCUMENTS'],
+          ['EXHIBITION DOCUMENTS / 展览资料', lang === 'zh' ? '展览资料' : fr ? 'DOCUMENTS D’EXPOSITION' : 'EXHIBITION DOCUMENTS'],
+          ['WORKS / 作品', lang === 'zh' ? '作品' : fr ? 'ŒUVRES' : 'WORKS'],
+          ['X-ART LAB. / MEMBER ACCESS', lang === 'zh' ? 'X-ART LAB. / 会员入口' : fr ? 'X-ART LAB. / ACCÈS MEMBRES' : 'X-ART LAB. / MEMBER ACCESS'],
+          ['CATALOGUES + BOOKS', lang === 'zh' ? '艺术家图录与书籍' : fr ? 'CATALOGUES + LIVRES' : 'CATALOGUES + BOOKS'],
+          ['INSTITUTIONAL ARCHIVES', lang === 'zh' ? '机构展览与收藏档案' : fr ? 'ARCHIVES INSTITUTIONNELLES' : 'INSTITUTIONAL ARCHIVES'],
+          ['ESSAYS + CRITICAL WRITING', lang === 'zh' ? '研究文章与评论' : fr ? 'ESSAIS + TEXTES CRITIQUES' : 'ESSAYS + CRITICAL WRITING'],
+          ['THEORY + CONTEXT', lang === 'zh' ? '艺术理论与语境阅读' : fr ? 'THÉORIE + CONTEXTE' : 'THEORY + CONTEXT'],
           ['原 PDF 第', fr ? 'PDF original, pp. ' : 'PDF pp. '],
           ['Philippe Parreno / 参考资料网页', fr ? 'Philippe Parreno / Page de référence' : 'Philippe Parreno / Reference page'],
         ].forEach(([from, to]) => replaceInTextNodes(from, to));
-        const concepts = fr ? ['l’exposition comme médium', 'espace scénarisé', 'espaces chorégraphiés', 'réalité et fiction', 'réalité, mémoire et passage du temps', 'quasi-objet', 'répétition et contrepoint', 'sculpture, dessin, film et performance', 'son et image', 'en temps réel'] : ['exhibition as medium', 'scripted space', 'choreographed spaces', 'reality and fiction', 'reality, memory, and the passage of time', 'quasi-object', 'repetition and counterpoint', 'sculpture, drawing, film, and performance', 'sound and image', 'in real time'];
+        const concepts = lang === 'zh' ? ['将展览作为媒介', '剧本化空间', '编舞化空间', '现实与虚构', '现实、记忆与时间流逝', '准物体', '重复与对位', '雕塑、绘画、电影与表演', '声音与影像', '实时性'] : fr ? ['l’exposition comme médium', 'espace scénarisé', 'espaces chorégraphiés', 'réalité et fiction', 'réalité, mémoire et passage du temps', 'quasi-objet', 'répétition et contrepoint', 'sculpture, dessin, film et performance', 'son et image', 'en temps réel'] : ['exhibition as medium', 'scripted space', 'choreographed spaces', 'reality and fiction', 'reality, memory, and the passage of time', 'quasi-object', 'repetition and counterpoint', 'sculpture, drawing, film, and performance', 'sound and image', 'in real time'];
         document.querySelectorAll('#profile .profile-list li').forEach((li, index) => { const link = li.querySelector('a'); if (link && concepts[index]) link.textContent = concepts[index]; [...li.childNodes].filter((node) => node.nodeType === Node.TEXT_NODE).forEach((node) => { node.nodeValue = ''; }); });
       };
       const sanitizeSingleLanguage = (lang) => {
